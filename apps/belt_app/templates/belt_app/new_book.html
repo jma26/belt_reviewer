@@ -12,7 +12,7 @@
     </div>
     <h1> Add a New Book and a Review: </h1>
     <div id="wrapper">
-        <form action="/book/process/{{ request.sesson.user_id }}" method = 'POST'>
+        <form action="/book/process/{{ request.session.user_id }}" method = 'POST'>
             {% csrf_token %}
         <div id="book_title">
             <label for="book_title"> Book Title: </label>

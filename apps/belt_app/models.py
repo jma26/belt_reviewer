@@ -13,7 +13,7 @@ class UserManager(models.Manager):
         if len(postData['name']) <= 0:
             errors.append("Name field can't be empty")
 
-        if len(postData['alias']) < 5:
+        if len(postData['alias']) <= 0:
             errors.append("Alias field can't be empty")
 
         if not EMAIL_REGEX.match(postData['email'].lower()):

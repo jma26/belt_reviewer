@@ -34,11 +34,14 @@ def book(request):
 
 def book_info(request, id):
     book = Book.objects.get(id = id)
-    reviews = Review.objects.all()
+    # reviews = Review.objects.all()
+    reviews = Review.objects.filter(book = book)
     context = {
         'book': book,
         'reviews': reviews
     }
+
+    print reviews
 
     return render(request, 'belt_app/book_info.html', context)
 
@@ -70,7 +73,7 @@ def add(request, id):
 ### Adding new book and book review process ###
 def add_process(request, id):
     errors = Book.objects.book_validation(request.POST)
-    if errors[0]:
+    if errors:
         for error in errors:
             messages.error(request, error)
         return render(request, 'belt_app/new_book.html')
@@ -84,10 +87,11 @@ def add_process(request, id):
 
         this_book = Book.objects.get(title = request.POST['book_title'])
 
-        reviews = result.book_reviews.all().count()
+        reviews = Review.objects.filter(book = this_book)
+
         context = {
             'book': this_book,
-            'reviews': reviews
+            'reviews': reviews,
         }
 
         return render(request, 'belt_app/book_info.html', context)
@@ -97,7 +101,15 @@ def add_comment(request, id):
     this_user = User.objects.get(id = request.session['user_id'])
     Review.objects.create(review = request.POST['review'], stars = request.POST['stars'], user = this_user, book = this_book)
 
-    return redirect('/book/(?P<id>\d+)$')
+    book = Book.objects.get(id = id)
+    # reviews = Review.objects.all()
+    reviews = Review.objects.filter(book = book)
+    context = {
+        'book': book,
+        'reviews': reviews
+    }
+
+    return render(request, 'belt_app/book_info.html', context)
 
 ### User information ###
 def user_info(request, id):

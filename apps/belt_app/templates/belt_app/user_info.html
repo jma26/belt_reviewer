@@ -7,7 +7,7 @@
 </head>
 <body>
     <p> <a href="/books"> Home </a></p>
-    <p> <a href="books/add/{{ request.session.user_id }}"> Add book and review </a></p>
+    <p> <a href="/books/add/{{ request.session.user_id }}"> Add book and review </a></p>
     <p class="links"> <a href="/logout"> Logout </a></p>
     <p> User Alias: {{ user.alias }} </p>
     <p> Name: {{ user.name }} </p>
@@ -17,7 +17,7 @@
     <p> Posted reviews on the following books: </p>
     {% for book in reviewed_books %}
         <h2><a href="/book/{{ book.book.id }}"> {{ book.book.title }} </a> </h2>
-        <h2> {{ book.book.id }} </h2>
+        <h2> Book ID: {{ book.book.id }} </h2>
     {% endfor %}
     <br>
 </body>

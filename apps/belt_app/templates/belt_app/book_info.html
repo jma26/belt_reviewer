@@ -15,7 +15,7 @@
         <h3> Star Rating: {{ review.stars }} </h3> 
         <h3> <a href="/book/user/{{ review.user.id }}"> {{ review.user.name }}</a> said "{{ review.review }}"</h3>
         <h3> {{ review.created_at }} </h3>
-        {% if review.user.id == request.session.user_id %}
+        {% if user.id == request.session.user_id %}
         <p> <a href="/delete/{{ review.id }}"> Delete </a></p>
         <p> {{ review.id }} </p>
         {% endif %}
