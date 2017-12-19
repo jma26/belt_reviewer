@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_app/css/user_info.css'%}">
+</head>
+<body>
+    <p> <a href="/books"> Home </a></p>
+    <p> <a href="books/add/{{ request.session.user_id }}"> Add book and review </a></p>
+    <p class="links"> <a href="/logout"> Logout </a></p>
+    <p> User Alias: {{ user.alias }} </p>
+    <p> Name: {{ user.name }} </p>
+    <p> Email: {{ user.email }} </p>
+    <p> Total Reviews: {{ total_reviews }}</p> 
+
+    <p> Posted reviews on the following books: </p>
+    {% for book in reviewed_books %}
+        <h2><a href="/book/{{ book.book.id }}"> {{ book.book.title }} </a> </h2>
+        <h2> {{ book.book.id }} </h2>
+    {% endfor %}
+    <br>
+</body>
+</html>

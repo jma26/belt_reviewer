@@ -1,0 +1,55 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 150px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+}
+
+#wrapper {
+    text-align: center;
+}
+
+#register_container, #login_container {
+    margin-top: 20px;
+    display: inline-block;
+    border: 1px solid green;
+    text-align: left;
+    padding: 10px;
+    vertical-align: top;
+}
+
+#register_container {
+    margin-right: 50px;
+}
+
+#register_button {
+    margin-left: 200px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+#login_button {
+    margin-left: 220px;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.input_container {
+    margin-top: 5px;
+}
+
+li {
+    color: red;
+    margin-top: 10px;
+}
+
+
+

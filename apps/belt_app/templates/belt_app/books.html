@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Book </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_app/css/books.css'%}"> 
+</head>
+<body>
+    <div id="navbar">
+        <h1 id="welcome"> Welcome {{ user.name }} {{ request.session.user_id }} </h1>
+        <p class="links book_link"> <a href="books/add/{{ request.session.user_id }}"> Add book and review </a></p>
+        <p class="links"> <a href="/logout"> Logout </a></p>
+    </div>
+
+    <h2> Recent Book Reviews: </h2>
+    {% for review in reviews %}
+    <div id="reviews">
+        <h1><a href="/book/{{ review.book.id }}"> Book Title: {{ review.book.title }} </a> </h1>
+        <h2> Book id is {{ review.book.id }} </h2> 
+        <h2> Book Author: {{ review.book.author }} </h2>
+        <h2> Stars: {{ review.stars }} </h2>
+        <p><a href="/book/user/{{ review.user.id }}"> {{ review.user.name }} | {{ review.user.id }} </a> said "{{ review.review }}" </p>
+        {% if user.id == request.session.user_id %}
+        <p> <a href="/delete/{{ review.id }}"> Delete </a></p>
+        <p> {{ review.id }} </p>
+        {% endif %}
+        <p> Posted on {{ review.created_at }} </p>
+    </div>
+    {% endfor %}
+
+</body> 
+</html>

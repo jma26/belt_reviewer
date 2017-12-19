@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> New Book </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_app/css/new_book.css'%}">
+</head>
+<body>
+    <div id="navbar">
+        <p id="home"> <a href="/books"> Home </a></p>
+        <p> <a href="/logout"> Logout </a></p>
+    </div>
+    <h1> Add a New Book and a Review: </h1>
+    <div id="wrapper">
+        <form action="/book/process/{{ request.sesson.user_id }}" method = 'POST'>
+            {% csrf_token %}
+        <div id="book_title">
+            <label for="book_title"> Book Title: </label>
+            <input type="text" name="book_title">
+        </div>
+        <div id="author">
+            <label class="label_2" for="author"> Author: </label>
+            <input type="text" name="author">
+        </div>
+        <div id="review">
+            <label for="review"> Review: </label>
+            <textarea name="review" rows="8" cols="50"></textarea>
+        </div>
+        <div id="rating">
+            <label for="rating"> Stars </label>
+            <input type="number" name="stars" min="1" max="5">
+        </div>
+        <button> Add Book and Review </button>
+        </form>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}        
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Login and Registration </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_app/css/index.css'%}">
+</head>
+<body>
+    <h1> Welcome </h1>
+    <div id="wrapper">
+        <div id= "register_container">
+            <form action='/registration' method= 'POST'>
+                {% csrf_token %}
+                <div class="input_container">
+                    <label for="name"> Name: </label>
+                    <input type="text" name="name">
+                </div>
+                <div class="input_container">
+                    <label for="alias"> Alias: </label>
+                    <input type="text" name="alias">
+                </div>
+                <div class="input_container">
+                    <label for="email"> Email: </label>
+                    <input type="text" name="email">
+                </div>
+                <p class="input_container"> Password must be at least 8 characters </p>
+                <div class="input_container">
+                    <label for="password"> Password: </label>
+                    <input type="password" name="password">
+                </div>
+                <div class="input_container">
+                    <label for="passwordcf"> Confirm PW: </label>
+                    <input type="password" name="passwordcf">
+                </div>
+                <button id="register_button"> Register </button> 
+            </form>
+        </div>
+        <div id="login_container">
+            <form action='/login' method= 'POST'>
+                {% csrf_token %}
+                <div class="input_container">
+                    <label for="email"> Email: </label>
+                    <input type="text" name="email">
+                </div>
+                <div class="input_container">
+                    <label for="password"> Password: </label>
+                    <input type="password" name="password">
+                </div>
+                <button id="login_button"> Login </button> 
+            </form>
+        </div>
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+                <li> {{ message }} </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

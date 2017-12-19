@@ -1,0 +1,21 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#welcome {
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.book_link {
+    margin-left: 1000px;
+    margin-right: 30px;
+}
+
+.links {
+    display: inline-block;
+    vertical-align: center;
+}
+

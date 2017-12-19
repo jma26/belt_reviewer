@@ -1,0 +1,73 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    width: 150px;
+    display: inline-block;
+}
+
+#author p {
+    font-size: 25px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+label {
+    font-size: 25px;
+}
+
+#author input {
+    margin-left: 35px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 310px;
+}
+
+#review label {
+    vertical-align: top;
+}
+
+#review {
+    margin-top: 5px;
+}
+
+#rating input {
+    width: 30px;
+}
+
+#wrapper {
+    margin-top: 10px;
+    margin-left: 550px;
+}
+
+#rating {
+    margin-top: 5px;
+}
+
+input {
+    vertical-align: top;
+}
+
+#navbar p {
+    display: inline-block;
+}
+
+#navbar {
+    margin-top: 10px;
+}
+
+#home {
+    margin-left: 1350px;
+    margin-right: 30px;
+}
+

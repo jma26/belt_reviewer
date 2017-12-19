@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Book Info </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'belt_app/css/book_info.css'%}">
+</head>
+<body>
+    <p> <a href="/books"> Home </a></p>
+    <p class="links"> <a href="/logout"> Logout </a></p>
+    <h1> Book Title: {{ book.title }} </h1>
+    <h1> Author: {{ book.author }} </h1>
+    <h1> Reviews </h1>
+    {% for review in reviews %}
+        <h3> Star Rating: {{ review.stars }} </h3> 
+        <h3> <a href="/book/user/{{ review.user.id }}"> {{ review.user.name }}</a> said "{{ review.review }}"</h3>
+        <h3> {{ review.created_at }} </h3>
+        {% if review.user.id == request.session.user_id %}
+        <p> <a href="/delete/{{ review.id }}"> Delete </a></p>
+        <p> {{ review.id }} </p>
+        {% endif %}
+    <form action="/book/comment/{{ review.book.id }}" method = "POST">
+    {% endfor %}
+    {% csrf_token %}
+        <textarea name="review" rows="8" cols="50"></textarea>
+        <label for="rating"> Stars </label>
+        <input type="number" name="stars" min="1" max="5">
+        <button> Submit Review </button> 
+    </form>
+</body>
+</html>
